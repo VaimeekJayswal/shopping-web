@@ -1,0 +1,32 @@
+<% var title = "Items"; %>
+<h1>Your Cart</h1>
+
+<% if (cart.length === 0) { %>
+  <p class="muted">Cart is empty.</p>
+<% } else { %>
+  <table>
+    <tr>
+      <th>Item</th><th>Price</th><th>Qty</th><th>Subtotal</th><th></th>
+    </tr>
+    <% cart.forEach(x => { %>
+      <tr>
+        <td><%= x.name %></td>
+        <td>₹ <%= x.price %></td>
+        <td><%= x.qty %></td>
+        <td>₹ <%= x.price * x.qty %></td>
+        <td>
+          <form method="POST" action="/cart/remove">
+            <input type="hidden" name="itemId" value="<%= x.item_id %>" />
+            <button class="btn danger" type="submit">Remove</button>
+          </form>
+        </td>
+      </tr>
+    <% }) %>
+  </table>
+
+  <h2>Total: ₹ <%= total %></h2>
+
+  <form method="POST" action="/checkout">
+    <button class="btn" type="submit">Checkout</button>
+  </form>
+<% } %>

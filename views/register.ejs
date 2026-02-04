@@ -1,0 +1,17 @@
+<% var title = "Items"; %>
+
+<h1>Register</h1>
+
+<% if (error) { %>
+  <p class="error"><%= error %></p>
+<% } %>
+
+<form method="POST" action="/register" class="card">
+  <label>Username</label>
+  <input name="username" required />
+
+  <label>Password</label>
+  <input name="password" type="password" required />
+
+  <button class="btn" type="submit">Create account</button>
+</form>

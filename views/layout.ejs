@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title><%= typeof title !== "undefined" ? title : "Vaimeek’s Shop" %></title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+  <div class="nav">
+    <span class="brand">Vaimeek’s Shop</span>
+
+    <a href="/items">Items</a>
+
+    <% if (user) { %>
+      <a href="/cart">Cart</a>
+      <a href="/orders">Orders</a>
+
+      <span class="pill">Logged in as: <b><%= user.username %></b></span>
+
+      <form action="/logout" method="POST" class="inline">
+        <button class="btn" type="submit">Logout</button>
+      </form>
+    <% } else { %>
+      <a href="/login">Login</a>
+      <a href="/register">Register</a>
+      <span class="pill">Not logged in</span>
+    <% } %>
+  </div>
+
+  <main class="container">
+    <%- body %>
+  </main>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<% var title = "Items"; %>
+<h1>Items</h1>
+
+<div class="grid">
+  <% items.forEach(item => { %>
+    <div class="card">
+      <h3><%= item.name %></h3>
+      <p>₹ <%= item.price %></p>
+
+      <% if (user) { %>
+        <form method="POST" action="/cart/add">
+          <input type="hidden" name="itemId" value="<%= item.id %>" />
+          <button class="btn" type="submit">Add to cart</button>
+        </form>
+      <% } else { %>
+        <p class="muted">Login to purchase</p>
+      <% } %>
+    </div>
+  <% }) %>
+</div>
